@@ -30,6 +30,9 @@ describe('Grade', () => {
 
     });  
     it('List of Level filter' , ()=>{
+      //cy.get('#all_levels').should('be.checked'); // checks if checkbox is selected
+      //cy.get('button[type = "button"]').contains("Apply filters").should('exist').click();
+
       cy.get('h5 > strong').contains("Level filters").should('exist');
 
       cy.get('label[for = "all_levels"').contains("All").should('exist');
@@ -79,5 +82,52 @@ describe('Grade', () => {
 
         cy.get('label[for = "expected_ByNow"').contains("Expected by now only").should('exist');
         cy.get('#expected_ByNow').should('exist').should('not.be.checked');
+    });
+
+    it('Apply filter for selected goal and group with all levels' , ()=>{        
+        //select topic 1
+        cy.get('#topic_186').check({force : true});
+        cy.get('#topic_186').should('exist').should('be.checked');
+
+        //select group 1
+        cy.get('#goal_1330').check({force : true});
+        cy.get('#goal_1330').should('exist').should('be.checked');
+        cy.get('#group_Group1').check({force : true});
+        cy.get('#group_Group1').should('exist').should('be.checked');
+
+        //select all levels
+        cy.get('#all_levels').check({force : true});
+        cy.get('#all_levels').should('exist').should('be.checked'); 
+
+        cy.get('#not_observed').uncheck({force : true});
+        cy.get('#not_observed').should('exist').should('not.be.checked');
+        
+        cy.get('button[type = "button"]').contains("Apply filters").should('exist').click();
+
+        cy.get('#total_goal').should('have.text', '2');
+        cy.get('#observedGoal').should('have.text', '2');
+        cy.get('#expectedByNow').should('have.text', '2');
+        cy.get('#late_goals').should('have.text', '0');
+
+        cy.get('input#goal_1330').should('exist').should('be.checked');
+       // cy.get('label[for = "check1330"').should('have.text', '\n                                \n                            Goal 1\n                            \n                            \n                                Topic: Topic 1\n                                \n                                \n                                    ECD: May 9, 2022\n                                \n                            \n                       ');
+        //cy.get('label[for = "check1330"').find('small').should('have.text', 'Topic: Topic 1');
+        //cy.get('label[for = "check1330"').find('small').find('strong').should('have.text', ' EDC: May 9, 2022 ');
+        cy.get('input#check1330_Group1').should('exist').should('be.checked');
+        cy.get('label[for = "check1330_Group1"').find('strong').should('have.text', 'Group 1');
+       
+        //cy.get('check1330_Group1_RaghadKh').should('exist').should('not.be.checked');
+        //cy.get('strong[for = "check1330_Group1_RaghadKh"').should('have.text', '\n Raghad\n Khatatba\n (RaghadKh)\n ');
+        //cy.get('h.goal_observed small').should('have.text', 'Observed on');
+        //cy.get('h.goal_observed').find('small').find('strong').should('have.text', 'May 11, 2023, 7:52 p.m');
+        //cy.get('h.goal_observed').find('small').find('strong').should('have.text', 'RaghadKh');
+        cy.get('select[name="grade"]').should('have.value', '4');
+
+        //cy.get('check1330_Group1_Nama_Salameh').should('exist').should('not.be.checked');
+        //cy.get('strong[for = "check1330_Group1_Nama_Salameh"').should('have.text', "Nama' Salameh (Nama_Salameh) ");
+        //cy.get('h.goal_observed').find('small').should('have.text', 'Observed on');
+       // cy.get('h.goal_observed').find('small').find('strong').should('have.text', 'May 11, 2023, 7:52 p.m');
+        //cy.get('h.goal_observed').find('small').find('strong').should('have.text', 'RaghadKh');
+        cy.get('select[name="grade"]').should('have.value', '4');
     });
 });
