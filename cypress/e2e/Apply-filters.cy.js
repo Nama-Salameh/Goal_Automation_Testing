@@ -70,4 +70,14 @@ describe('Grade', () => {
         cy.get('#goal_1232').should('exist').should('not.be.checked');
     });
 
+    it('List of Group filter' , ()=>{
+
+        cy.get('h5 > strong').contains("Other filters").should('exist');
+
+        cy.get('label[for = "not_observed"').contains("Not observed").should('exist');
+        cy.get('#not_observed').should('exist').should('be.checked');
+
+        cy.get('label[for = "expected_ByNow"').contains("Expected by now only").should('exist');
+        cy.get('#expected_ByNow').should('exist').should('not.be.checked');
+    });
 });
