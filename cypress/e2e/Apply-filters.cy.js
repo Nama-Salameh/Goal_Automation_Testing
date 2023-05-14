@@ -45,4 +45,29 @@ describe('Grade', () => {
       cy.get('#level_High').should('exist').should('be.checked'); 
     });
 
+    it('List of Goal Filter' , ()=>{
+        cy.get('h5 > strong').contains("Goal Filter").should('exist');
+
+        cy.get('label[for = "all_goals"').should('exist');
+        cy.get(':nth-child(1) > .custom-control-label > h5').should('exist').contains("All Goals");
+        cy.get('#all_goals').should('exist').should('not.be.checked'); 
+
+        cy.get('label[for = "topic_186"').should('exist');
+        cy.get(':nth-child(7) > .custom-control-label > h5').should('exist').contains("Topic 1");
+        cy.get('#topic_186').should('exist').should('not.be.checked');
+        
+        cy.get('label[for = "topic_185"').should('exist');
+        cy.get(':nth-child(3) > .custom-control-label > h5').should('exist').contains("Topic 2");
+        cy.get('#topic_185').should('exist').should('not.be.checked');
+        
+        cy.get('label[for = "goal_1330"').contains("Goal 1").should('exist');
+        cy.get('#goal_1330').should('exist').should('not.be.checked');
+
+        cy.get('label[for = "goal_1291"').contains("Goal 2").should('exist');
+        cy.get('#goal_1291').should('exist').should('not.be.checked');
+        
+        cy.get('label[for = "goal_1232"').contains("Goal 3").should('exist');
+        cy.get('#goal_1232').should('exist').should('not.be.checked');
+    });
+
 });
