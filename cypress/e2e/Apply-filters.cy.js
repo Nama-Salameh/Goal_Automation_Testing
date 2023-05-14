@@ -29,5 +29,20 @@ describe('Grade', () => {
         cy.get('#group_Group1').should('exist').should('not.be.checked'); 
 
     });  
+    it('List of Level filter' , ()=>{
+      cy.get('h5 > strong').contains("Level filters").should('exist');
+
+      cy.get('label[for = "all_levels"').contains("All").should('exist');
+      cy.get('#all_levels').should('exist').should('be.checked'); 
+
+      cy.get('label[for = "level_Low"').should('exist').contains("Low");
+      cy.get('#level_Low').should('exist').should('be.checked'); 
+
+      cy.get('label[for = "level_Medium"').should('exist').contains("Medium");
+      cy.get('#level_Medium').should('exist').should('be.checked'); 
+
+      cy.get('label[for = "level_High"').should('exist').contains("High");
+      cy.get('#level_High').should('exist').should('be.checked'); 
+    });
 
 });
