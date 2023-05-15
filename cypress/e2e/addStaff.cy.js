@@ -8,18 +8,19 @@ beforeEach(() =>{
   cy.visit('https://goal-dev.mdx.ac.uk/staff/30/staffs/');
   })
 
+  //check open staff page
    it('Open Staff page', () => {
     cy.get('table.table').should('exist');
    });
-
+//check that Staff page contain Button add staff
    it('Staff page contain Button add staff', () => {
     cy.get('button').contains('Add staff').should('exist');
    });
-
+//check that Staff page contain Input for add staff
    it('Staff page contain Input for add staff', () => {
     cy.get('input#new_staff').should('exist');
    });
-
+//Check Add staff feature with valid user name
    it('Check Add staff feature with valid user name ', () => {
         // Type in a valid username in the input field
         cy.get('#new_staff').type('nama.salameh')
@@ -30,7 +31,7 @@ beforeEach(() =>{
         // Check that the user was successfully added to the table
         cy.get('table').should('contain', 'nama.salameh')
    });
-
+//Check Add staff feature with InValid user name.
     it('Check Add staff feature with InValid user name. ', () => {
       // Type in a valid username in the input field
       cy.get('#new_staff').type('xx')
@@ -41,7 +42,7 @@ beforeEach(() =>{
     // Assert that the user was not added to the table
     cy.get('table').should('not.contain', 'xx');
  });
-
+//Check Add staff feature with empty username
  it('Check Add staff feature with empty username ', () => {
     // leave the input field empty
     cy.get('input#new_staff').clear()
