@@ -1,8 +1,9 @@
+//By Nama' Salameh
 describe('Observer', () => {
 
     //this variable to remove duplicate code that excute in the beggining of 3 cases
     let specialFilters = false;
-    
+
     beforeEach( ()=>{
         //go to goals page from Nama' Salameh account
         cy.visit('https://goal-dev.mdx.ac.uk/');
