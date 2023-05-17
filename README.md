@@ -1,5 +1,5 @@
 ## Video link (Raghad Khatatba):
-#### Add, Remove and Search for stadd
+#### Add, Remove and Search for staff
 https://drive.google.com/file/d/1q10DRpSBJ71HkSM94F0tpUYnrbrbSNjD/view?usp=sharing
 
 
